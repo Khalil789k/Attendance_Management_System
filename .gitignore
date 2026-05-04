@@ -1,0 +1,27 @@
+# PHP
+vendor/
+composer.lock
+.env
+.env.local
+.env.*.local
+config/config.php
+
+# Web Server
+.htaccess
+error_log
+access_log
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp files
+tmp/
+cache/

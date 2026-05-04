@@ -1,0 +1,31 @@
+<?php
+/**
+ * Database Configuration Example
+ * 
+ * Instructions:
+ * 1. Copy this file to 'database.php'
+ * 2. Update the credentials below with your actual database settings
+ */
+
+class Database {
+    private $host = "localhost";
+    private $db_name = "attendance_system";
+    private $username = "your_username";
+    private $password = "your_password";
+    public $conn;
+
+    public function getConnection() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            // In production, you might want to log this instead of echoing
+            error_log("Connection error: " . $exception->getMessage());
+            die("Database connection failed. Please check your configuration.");
+        }
+        return $this->conn;
+    }
+}
+?>
